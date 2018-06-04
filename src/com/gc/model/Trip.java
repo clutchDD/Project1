@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity // marks the class as a hibernate entity (mapped class)
 @Table(name = "trips") // maps the class to the DB table specified by the name modifier
 public class Trip implements Serializable {
@@ -23,7 +24,7 @@ public class Trip implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trip(String email, String to, String from, String departureTime, String numSeats, String roundtrip) {
+	public Trip(String email, String to, String from, String departureTime, String numSeats, String roundtrip, String destination, String pickup) {
 		super();
 		this.email = email;
 		this.destination = destination;

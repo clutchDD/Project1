@@ -3,41 +3,71 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+#header {
+	top: 0px;
+	left: 0px;
+	position: fixed;
+	color: black;
+	background-color: white;
+	height: 100px;
+	width: 100%;
+	z-index: 1;
+	text-align: center;
+	display: block;
+}
+
+input[type=text] {
+    border: solid 1.5px #ffc918;
+    border-radius: 4px;
+}
+
+p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size="6";
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Sign Up</title>
 </head>
 <body>
 
-	<div id="header">-- <a href="index.html">Back </a> --  INSERT LOGO -- -- User Navigation (<a href="RiderTripDetails.html">Current Trip </a> <a href="PastTrips.html">Past Trips </a><a href="MessageYourDriver.html">Chat </a><a href="UserProfile.html">Profile </a>) --</div>
-
+		<div id="header">
+		<br>
+		<a href="index.html"><img
+			src="https://image.ibb.co/kFqK6T/back_3x.png" alt="back" align="left"></a>
+		<img src="https://image.ibb.co/eYcVfo/goyu_logo_2x.png" alt="med logo"
+			align="center"> <br>
+	</div>
+	<br><br>
 <div style="text-align:center">
 <br>
 <br>
 Let's Make Your Profile!
 <br>
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Elliot_Grieveson.png" alt="profile" width="200" height="200">
+<img src="https://image.ibb.co/dcMbqy/profile_2x.png" alt="profile">
 <br>
 	<form>
-		<input type="button" value="Upload a Photo" onclick="window.location.href='uploadpic.html'" />
+		<input type="image" name="submit" src="https://image.ibb.co/g5pCVy/Upload.png" border="0" alt="Submit" />
 	</form>
 <br>
 <form action="SignUpSuccess" method="post">
 
-<label for="name"><b>Name</b></label><br>
-		<input type="text" placeholder="Jane Doe" name="name" required><br>
-<label for="phone"><b>Phone Number</b></label><br>
-		<input type="text" placeholder="3135551212" name="phone" required><br>
-<label for="email"><b>Email</b></label><br>
-		<input type="text" placeholder="name@domain.com" name="email" required><br>
-<label for="password"><b>Password</b></label><br>
+<label for="name"><b>Name</b></label>
+		<input type="text" placeholder="Jane Doe" name="name" required>
+<label for="phone"><b>Phone Number</b></label>
+		<input type="text" placeholder="3135551212" name="phone" required><br><br>
+<label for="email"><b>Email</b></label>
+		<input type="text" placeholder="name@domain.com" name="email" required>
+<label for="password"><b>Password</b></label>
 		<input type="text" placeholder="**********" name="password" required><br>
-<br>
+<br><p>
 To have a better experience with us, we suggest you
-<br><br>
-
-		<input type="button" value="Connect with Facebook" onclick="window.location.href='connectwithfacebook.html'" />
-<br><br>
-  <input type="submit" value="Done"/>
+</p>
+<br>
+ <img src="https://image.ibb.co/egtgqy/image1.png" alt="temp">
+<br>
+  <input type="image" name="submit" src="https://image.ibb.co/kxn4Qy/Done_Button.png" border="0" alt="Submit" />
 </form>
 </div>
 

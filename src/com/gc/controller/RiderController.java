@@ -1,9 +1,14 @@
 package com.gc.controller;
 
+import java.util.ArrayList;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,15 +46,47 @@ public class RiderController {
 			tx.commit();
 			session.close();
 
-			return new ModelAndView("ShowAllDrivers", "product", newTrip);
+			ArrayList<Trip> tripList = listAllTrips();
+			
+			return new ModelAndView("ShowAllRiders", "tripList", tripList);
 	}
+		
+	
+	
+	
 	
 	@RequestMapping("/ShowAllDrivers")
-	public ModelAndView showAllDrivers() {
+	// this is listing all the data from the product class
+	public ModelAndView showAllRiders(Model model) {
 
-		String message = "Driver display page, will connect to database at a later milestone";
-		return new ModelAndView("ShowAllDrivers", "message", message);
+		// Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		// ServiceRegistry serviceRegistry = new
+		// ServiceRegistryBuilder().applySettings(config.getProperties())
+		// .buildServiceRegistry();
+		ArrayList<Trip> tripList = listAllTrips();
+
+		return new ModelAndView("ShowAllRiders", "tripList", tripList);
 	}
+
+	private ArrayList<Trip> listAllTrips() throws HibernateException {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction(); // the transaction represents the unit of work or the actual
+														// implemention of of our code
+		Criteria crit = session.createCriteria(Trip.class);
+		ArrayList<Trip> tripList = (ArrayList<Trip>) crit.list();
+		System.out.println(tripList.size());
+
+		//model.addAttribute("specificItem", prodList.get(2).getDescription());
+		tx.commit();
+		session.close();
+		return tripList;
+	}
+	
+	
+	
+	
 	
 	@RequestMapping("/MessageYourDriver")
 	public ModelAndView messageYourDriver() {

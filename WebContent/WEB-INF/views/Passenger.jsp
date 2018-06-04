@@ -3,15 +3,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+#header {
+	top: 0px;
+	left: 0px;
+	position: fixed;
+	color: black;
+	background-color: white;
+	height: 100px;
+	width: 100%;
+	z-index: 1;
+	text-align: center;
+	display: block;
+}
+
+input[type=text] {
+    border: solid 1.5px #ffc918;
+    border-radius: 4px;
+}
+
+p {
+    font-family: Verdana, Geneva, sans-serif;
+    font-size="6";
+}
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Passenger</title>
 </head>
 <body>
-
-	<div id="header">-- <a href="welcome.html">Back </a> --  INSERT LOGO -- -- User Navigation (<a href="RiderTripDetails.html">Current Trip </a> <a href="PastTrips.html">Past Trips </a><a href="MessageYourDriver.html">Chat </a><a href="UserProfile.html">Profile </a>) --</div>
-
-<div style="text-align:left">
-<br>
+	<div id="header">
+		<br>
+		<a href="index.html"><img
+			src="https://image.ibb.co/kFqK6T/back_3x.png" alt="back" align="left"></a>
+		<img src="https://image.ibb.co/eYcVfo/goyu_logo_2x.png" alt="med logo"
+			align="center"> <br>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+<div style="text-align:center">
+<p style="font-size:25px">Let's plan your trip</p><br>
 <br>
 <form action="RiderSuccess" method="post">
 <label for="email"><b>Confirm Email:</b></label><br>
@@ -27,9 +61,10 @@
 <label for="roundtrip"><b>Round Trip:</b></label><br>
 		<input type="text" placeholder="Yes or No" name="roundtrip" required><br>
 <br>
-<input type="submit" value="Done" />
+<input type="image" name="submit" src="https://image.ibb.co/kxn4Qy/Done_Button.png" border="0" alt="Submit" />
 </form>
 </div>
+
 
 </body>
 </html>
