@@ -1,9 +1,21 @@
 package com.gc.controller;
 
+import java.util.ArrayList;
+
+import java.util.Iterator;
+
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+
+import java.util.List;
+
+import org.hibernate.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,17 +52,52 @@ public class DriverController {
 			session.save(newTrip);
 			tx.commit();
 			session.close();
+			
+			ArrayList<Trip> tripList = listAllTrips();
 
-			return new ModelAndView("ShowAllRiders", "product", newTrip);
+			return new ModelAndView("ShowAllRiders", "tripList", tripList);
 	}
 	
+	
+	
+	
+	
+	
+
 	
 	@RequestMapping("/ShowAllRiders")
-	public ModelAndView showAllRiders() {
+	// this is listing all the data from the product class
+	public ModelAndView showAllRiders(Model model) {
 
-		String message = "Passenger display page, will connect to database at a later milestone";
-		return new ModelAndView("ShowAllRiders", "message", message);
+		// Configuration config = new Configuration().configure("hibernate.cfg.xml");
+		// ServiceRegistry serviceRegistry = new
+		// ServiceRegistryBuilder().applySettings(config.getProperties())
+		// .buildServiceRegistry();
+		ArrayList<Trip> tripList = listAllTrips();
+
+		return new ModelAndView("ShowAllRiders", "tripList", tripList);
 	}
+
+	private ArrayList<Trip> listAllTrips() throws HibernateException {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction(); // the transaction represents the unit of work or the actual
+														// implemention of of our code
+		Criteria crit = session.createCriteria(Trip.class);
+		ArrayList<Trip> tripList = (ArrayList<Trip>) crit.list();
+		System.out.println(tripList.size());
+
+		//model.addAttribute("specificItem", prodList.get(2).getDescription());
+		tx.commit();
+		session.close();
+		return tripList;
+	}
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/MessageYourRider")
 	public ModelAndView messageYourRider() {
